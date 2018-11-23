@@ -1,0 +1,20 @@
+
+
+<div class="app">
+    <header class="app-header">
+        <h2> WELCOME {{userName}}</h2>
+        <div>
+        <p>Ask a question</p>
+        <input [(ngModel)] ="question" /> 
+        <button (click)= "ask()"> ASK </button> 
+    	</div>
+        
+        <div *ngFor="let answer of answers">
+        </div>
+
+
+  
+
+    </header>
+</div>
+

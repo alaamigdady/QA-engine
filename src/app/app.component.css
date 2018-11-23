@@ -1,0 +1,39 @@
+.app {
+ text-align: center;
+}
+
+.app-header {
+ background-color: #C70039;
+ min-height: 100vh;
+ justify-content: center;
+ font-size: calc(10px + 2vmin);
+ color:white;
+}
+.category{
+    float: left;
+    margin: 50px;
+    font-size : 20px;
+}
+
+.amount{
+    font-size : 20px;
+    float: left;
+    margin: 50px;
+}
+.date{
+    font-size : 20px;
+    float: left;
+    margin: 50px;
+}
+.button{
+    float: left;
+    margin: 118px;
+}
+.input{
+ margin: 200px;
+ font-size : 20px;}
+.inputp{
+ margin:200px;
+font-size : 20px;}
+.b{
+      margin: 200px;}

@@ -1,0 +1,17 @@
+
+
+<div class="app">
+    <header class="app-header">
+        
+        
+        <div *ngFor="let question of questions">
+            <input [(ngModel)] ="answer" /> 
+            <button (click)= "answer(question.id)"> ANSWER </button> 
+        </div>
+
+
+  
+
+    </header>
+</div>
+

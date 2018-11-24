@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {appService} from './app.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'profile',

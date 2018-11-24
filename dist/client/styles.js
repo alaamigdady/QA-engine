@@ -555,7 +555,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/hamzah/Desktop/expenses-tracker/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /home/hamzah/Desktop/QA-engine/src/styles.css */"./src/styles.css");
 
 
 /***/ })

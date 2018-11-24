@@ -21,22 +21,22 @@ export class appService {
    constructor(private http:HttpClient) {}
 
    
-   logIn(params){
-   return this.http.get('/logIn',params)
-   .do(res => {
-        if(res.status === '200' && userSource === 'admin') this.router.navigate(['/adminProfile']);
-        else if (res.status === '200') this.router.navigate(['/profile']);
-      })
-      .catch(console.log('error'))
+   logIn(user,password){
+   return this.http.get('/users/'+user+'/'+password)
+   // .do(res => {
+   //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
+   //      else if (res.status === '200') this.router.navigate(['/profile']);
+   //    })
+   //    .catch(console.log('error'))
    }
 
    signUp(params){
-   return this.http.post('/signUp',params)
-   .do(res => {
-        if(res.status === '200' && userSource === 'admin') this.router.navigate(['/adminProfile']);
-        else if (res.status === '200') this.router.navigate(['/profile']);
-      })
-      .catch(console.log('error'))
+   return this.http.post('/users',params)
+   // .do(res => {
+   //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
+   //      else if (res.status === '200') this.router.navigate(['/profile']);
+   //    })
+   //    .catch(console.log('error'))
    }
 
    getAllAnswers(){

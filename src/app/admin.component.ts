@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {appService} from './app.service';
 
 @Component({
   selector: 'admin',
@@ -21,7 +22,7 @@ ngOnInit(){
  		{this.questions=data},(err)=>{console.log('error')})
  }
 
- answer(id){
+ answerQ(id){
  this.app.answer({"answer":this.answer,"id":id})
  }
 

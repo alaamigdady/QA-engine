@@ -14,11 +14,11 @@ import { ProfileComponent } from './profile.component';
 
 
 const appRoutes: Routes = [
-   {path: '', component: MainComponent,
-   path: 'signUp', component: SignComponent,
-   path: 'profile', component: ProfileComponent,
+   {path: '', component: MainComponent},
+   {path: 'signUp', component: SignComponent},
+   {path: 'profile', component: ProfileComponent}
 
- }
+ 
  
 ];
 

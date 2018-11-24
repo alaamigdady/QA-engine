@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {appService} from './app.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'main',
@@ -16,7 +18,7 @@ export class MainComponent {
 
  logIn(){
  	this.app.changeUser(this.userName);
- 	this.app.logIn({"userName":this.userName,"passWord":this.passWord}).subscribe()
+ 	this.app.logIn(this.userName,this.passWord).subscribe()
  }
 
   

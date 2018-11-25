@@ -23,6 +23,66 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin.component.html":
+/*!**************************************!*\
+  !*** ./src/app/admin.component.html ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        \n        \n        <div *ngFor=\"let question of questions\">\n            <input [(ngModel)] =\"answer\" /> \n            <button (click)= \"answerQ(question.id)\"> ANSWER </button> \n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/admin.component.ts":
+/*!************************************!*\
+  !*** ./src/app/admin.component.ts ***!
+  \************************************/
+/*! exports provided: AdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdminComponent = /** @class */ (function () {
+    function AdminComponent(app) {
+        this.app = app;
+    }
+    AdminComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.app.getAllQuestions().subscribe(function (data) { _this.questions = data; }, function (err) { console.log('error'); });
+    };
+    AdminComponent.prototype.answerQ = function (id) {
+        this.app.answer({ "answer": this.answer, "id": id });
+    };
+    AdminComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'admin',
+            template: __webpack_require__(/*! ./admin.component.html */ "./src/app/admin.component.html"),
+            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
+        }),
+        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"]])
+    ], AdminComponent);
+    return AdminComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -30,7 +90,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".app {\n text-align: center;\n}\n\n.app-header {\n background-color: #C70039;\n min-height: 100vh;\n justify-content: center;\n font-size: calc(10px + 2vmin);\n color:white;\n}\n\n.category{\n    float: left;\n    margin: 50px;\n    font-size : 20px;\n}\n\n.amount{\n    font-size : 20px;\n    float: left;\n    margin: 50px;\n}\n\n.date{\n    font-size : 20px;\n    float: left;\n    margin: 50px;\n}\n\n.button{\n    float: left;\n    margin: 118px;\n}\n\n.input{\n margin: 200px;\n font-size : 20px;}\n\n.inputp{\n margin:200px;\nfont-size : 20px;}\n\n.b{\n      margin: 200px;}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxtQkFBbUI7Q0FDbkI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsa0JBQWtCO0NBQ2xCLHdCQUF3QjtDQUN4Qiw4QkFBOEI7Q0FDOUIsWUFBWTtDQUNaOztBQUNEO0lBQ0ksWUFBWTtJQUNaLGFBQWE7SUFDYixpQkFBaUI7Q0FDcEI7O0FBRUQ7SUFDSSxpQkFBaUI7SUFDakIsWUFBWTtJQUNaLGFBQWE7Q0FDaEI7O0FBQ0Q7SUFDSSxpQkFBaUI7SUFDakIsWUFBWTtJQUNaLGFBQWE7Q0FDaEI7O0FBQ0Q7SUFDSSxZQUFZO0lBQ1osY0FBYztDQUNqQjs7QUFDRDtDQUNDLGNBQWM7Q0FDZCxpQkFBaUIsQ0FBQzs7QUFDbkI7Q0FDQyxhQUFhO0FBQ2QsaUJBQWlCLENBQUM7O0FBQ2xCO01BQ00sY0FBYyxDQUFDIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYXBwIHtcbiB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5hcHAtaGVhZGVyIHtcbiBiYWNrZ3JvdW5kLWNvbG9yOiAjQzcwMDM5O1xuIG1pbi1oZWlnaHQ6IDEwMHZoO1xuIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuIGZvbnQtc2l6ZTogY2FsYygxMHB4ICsgMnZtaW4pO1xuIGNvbG9yOndoaXRlO1xufVxuLmNhdGVnb3J5e1xuICAgIGZsb2F0OiBsZWZ0O1xuICAgIG1hcmdpbjogNTBweDtcbiAgICBmb250LXNpemUgOiAyMHB4O1xufVxuXG4uYW1vdW50e1xuICAgIGZvbnQtc2l6ZSA6IDIwcHg7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgbWFyZ2luOiA1MHB4O1xufVxuLmRhdGV7XG4gICAgZm9udC1zaXplIDogMjBweDtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBtYXJnaW46IDUwcHg7XG59XG4uYnV0dG9ue1xuICAgIGZsb2F0OiBsZWZ0O1xuICAgIG1hcmdpbjogMTE4cHg7XG59XG4uaW5wdXR7XG4gbWFyZ2luOiAyMDBweDtcbiBmb250LXNpemUgOiAyMHB4O31cbi5pbnB1dHB7XG4gbWFyZ2luOjIwMHB4O1xuZm9udC1zaXplIDogMjBweDt9XG4uYntcbiAgICAgIG1hcmdpbjogMjAwcHg7fVxuIl19 */"
+module.exports = ".app {\n text-align: center;\n}\n\n.app-header {\n background-color: #0A6610;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  font-size: calc(10px + 2vmin);\ncolor: white;\n}\n\n.button{\n    margin: 30px;\n}\n\n.input{\n margin: 200px;\n font-size : 20px;}\n\n.inputp{\n margin:200px;\nfont-size : 20px;}\n\n.b{\n      margin: 200px;\n  }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxtQkFBbUI7Q0FDbkI7O0FBRUQ7Q0FDQywwQkFBMEI7RUFDekIsa0JBQWtCO0VBQ2xCLGNBQWM7RUFDZCx1QkFBdUI7RUFDdkIsb0JBQW9CO0VBQ3BCLHdCQUF3QjtFQUN4Qiw4QkFBOEI7QUFDaEMsYUFBYTtDQUNaOztBQUVEO0lBQ0ksYUFBYTtDQUNoQjs7QUFDRDtDQUNDLGNBQWM7Q0FDZCxpQkFBaUIsQ0FBQzs7QUFDbkI7Q0FDQyxhQUFhO0FBQ2QsaUJBQWlCLENBQUM7O0FBQ2xCO01BQ00sY0FBYztHQUNqQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFwcCB7XG4gdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uYXBwLWhlYWRlciB7XG4gYmFja2dyb3VuZC1jb2xvcjogIzBBNjYxMDtcbiAgbWluLWhlaWdodDogMTAwdmg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmb250LXNpemU6IGNhbGMoMTBweCArIDJ2bWluKTtcbmNvbG9yOiB3aGl0ZTtcbn1cblxuLmJ1dHRvbntcbiAgICBtYXJnaW46IDMwcHg7XG59XG4uaW5wdXR7XG4gbWFyZ2luOiAyMDBweDtcbiBmb250LXNpemUgOiAyMHB4O31cbi5pbnB1dHB7XG4gbWFyZ2luOjIwMHB4O1xuZm9udC1zaXplIDogMjBweDt9XG4uYntcbiAgICAgIG1hcmdpbjogMjAwcHg7XG4gIH1cbiJdfQ== */"
 
 /***/ }),
 
@@ -99,6 +159,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main.component */ "./src/app/main.component.ts");
 /* harmony import */ var _sign_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./sign.component */ "./src/app/sign.component.ts");
 /* harmony import */ var _profile_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./profile.component */ "./src/app/profile.component.ts");
+/* harmony import */ var _admin_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./admin.component */ "./src/app/admin.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -115,10 +176,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var appRoutes = [
     { path: '', component: _main_component__WEBPACK_IMPORTED_MODULE_7__["MainComponent"] },
     { path: 'signUp', component: _sign_component__WEBPACK_IMPORTED_MODULE_8__["SignComponent"] },
-    { path: 'profile', component: _profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"] }
+    { path: 'profile', component: _profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"] },
+    { path: 'admin', component: _admin_component__WEBPACK_IMPORTED_MODULE_10__["AdminComponent"] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -126,10 +189,10 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _main_component__WEBPACK_IMPORTED_MODULE_7__["MainComponent"], _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _sign_component__WEBPACK_IMPORTED_MODULE_8__["SignComponent"], _profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"]
+                _main_component__WEBPACK_IMPORTED_MODULE_7__["MainComponent"], _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _sign_component__WEBPACK_IMPORTED_MODULE_8__["SignComponent"], _profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], _admin_component__WEBPACK_IMPORTED_MODULE_10__["AdminComponent"]
             ],
             imports: [
-                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes, { enableTracing: true }), _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
+                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes), _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
             ],
             providers: [_app_service__WEBPACK_IMPORTED_MODULE_5__["appService"]],
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]],
@@ -179,21 +242,11 @@ var appService = /** @class */ (function () {
         this.userSource = new rxjs_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]('default');
         this.currentUser = this.userSource.asObservable();
     }
-    appService.prototype.logIn = function (params) {
-        return this.http.get('/logIn', params);
-        // .do(res => {
-        //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
-        //      else if (res.status === '200') this.router.navigate(['/profile']);
-        //    })
-        //    .catch(console.log('error'))
+    appService.prototype.logIn = function (user, password) {
+        return this.http.get('/users/' + user + '/' + password, { responseType: 'text' });
     };
     appService.prototype.signUp = function (params) {
-        return this.http.post('/signUp', params);
-        // .do(res => {
-        //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
-        //      else if (res.status === '200') this.router.navigate(['/profile']);
-        //    })
-        //    .catch(console.log('error'))
+        return this.http.post('/users', params, { responseType: 'text' });
     };
     appService.prototype.getAllAnswers = function () {
         return this.http.get('/questions/true');
@@ -205,6 +258,7 @@ var appService = /** @class */ (function () {
         return this.http.post('/questions/answer', params);
     };
     appService.prototype.ask = function (params) {
+        console.log(params, 'sssssss');
         return this.http.post('/questions/ask', params);
     };
     appService.prototype.changeUser = function (user) {
@@ -228,7 +282,7 @@ var appService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME</h2>\n        <input [(ngModel)] =\"userName\" placeholder=\"user name\" />  \n        <input [(ngModel)] =\"passWord\"  placeholder=\"pass word\" type=\"password\" />    \n\n        <button (click) = \"logIn()\" class=\"button\">log in</button>\n\n        <a [routerLink] = \"['/signUp']\"><button>New User? sign Up</button></a>\n\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME</h2>\n        <br>\n        <br>\n        <br>\n        <div>\n        <input [(ngModel)] =\"userName\" placeholder=\"user name\" />  \n        <input [(ngModel)] =\"passWord\"  placeholder=\"pass word\" type=\"password\" />    \n        \t<br>\n        \t<br>\n        \t<br>\n        <button (click) = \"logIn()\" class=\"button\">log in</button>\n        </div>\n\n        <a [routerLink] = \"['/signUp']\"><button class=\"button\">sign Up</button></a>\n\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -244,6 +298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainComponent", function() { return MainComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -255,13 +310,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var MainComponent = /** @class */ (function () {
-    function MainComponent(app) {
+    function MainComponent(app, router) {
         this.app = app;
+        this.router = router;
     }
     MainComponent.prototype.logIn = function () {
+        var _this = this;
         this.app.changeUser(this.userName);
-        this.app.logIn({ "userName": this.userName, "passWord": this.passWord }).subscribe();
+        this.app.logIn(this.userName, this.passWord).subscribe(function (data) {
+            if (data === 'ok') {
+                _this.router.navigate(['/profile']);
+            }
+            else if (data === 'admin') {
+                _this.router.navigate(['/admin']);
+            }
+            else {
+                alert(data);
+            }
+        });
     };
     MainComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -269,7 +337,7 @@ var MainComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./main.component.html */ "./src/app/main.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"]])
+        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], MainComponent);
     return MainComponent;
 }());
@@ -285,7 +353,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n        </div>\n\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n            <p>gggg</p>\n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -322,6 +390,7 @@ var ProfileComponent = /** @class */ (function () {
         this.app.getAllAnswers().subscribe(function (data) { _this.answers = data; }, function (err) { console.log('error'); });
     };
     ProfileComponent.prototype.ask = function () {
+        console.log(this.userName, this.question);
         this.app.ask({ "question": this.question, "user": this.userName });
     };
     ProfileComponent = __decorate([
@@ -346,7 +415,7 @@ var ProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <input [(ngModel)] =\"userName\" placeholder=\"user name\" />  \n        <input [(ngModel)] =\"passWord\"  placeholder=\"pass word\" type=\"password\" />    \n\n        <button (click) = \"signUp()\" class=\"button\">sign Up</button>\n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n\n    \t<div>\n        <input [(ngModel)] =\"userName\" placeholder=\"user name\" />  \n        <input [(ngModel)] =\"password\"  placeholder=\"pass word\" type=\"password\" />    \n<br>\n<br>\n<br>\n\n        <button (click) = \"signUp()\" class=\"button\">sign Up</button>\n</div>\n\n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -362,6 +431,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignComponent", function() { return SignComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -373,13 +443,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var SignComponent = /** @class */ (function () {
-    function SignComponent(app) {
+    function SignComponent(app, router) {
         this.app = app;
+        this.router = router;
     }
     SignComponent.prototype.signUp = function () {
+        var _this = this;
         this.app.changeUser(this.userName);
-        this.app.signUp({ "userName": this.userName, "passWord": this.passWord }).subscribe();
+        this.app.signUp({ "userName": this.userName, "password": this.password }).subscribe(function (data) {
+            if (data === 'ok') {
+                _this.router.navigate(['/profile']);
+            }
+            else {
+                alert(data);
+            }
+        });
     };
     SignComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -387,7 +467,7 @@ var SignComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sign.component.html */ "./src/app/sign.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"]])
+        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], SignComponent);
     return SignComponent;
 }());

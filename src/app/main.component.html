@@ -3,12 +3,19 @@
 <div class="app">
     <header class="app-header">
         <h2> WELCOME</h2>
+        <br>
+        <br>
+        <br>
+        <div>
         <input [(ngModel)] ="userName" placeholder="user name" />  
         <input [(ngModel)] ="passWord"  placeholder="pass word" type="password" />    
-
+        	<br>
+        	<br>
+        	<br>
         <button (click) = "logIn()" class="button">log in</button>
+        </div>
 
-        <a [routerLink] = "['/signUp']"><button>New User? sign Up</button></a>
+        <a [routerLink] = "['/signUp']"><button class="button">sign Up</button></a>
 
 
   

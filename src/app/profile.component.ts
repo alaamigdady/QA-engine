@@ -25,6 +25,7 @@ ngOnInit(){
  }
 
  ask(){
+ console.log(this.userName , this.question)
  	this.app.ask({"question":this.question,"user":this.userName})
  }
   

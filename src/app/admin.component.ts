@@ -8,7 +8,7 @@ import {appService} from './app.service';
 
   
 })
-export class ProfileComponent {
+export class AdminComponent {
 	
 	questions:any;
 	answer: any;

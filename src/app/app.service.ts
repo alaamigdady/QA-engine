@@ -1,8 +1,9 @@
 import { Injectable ,Output, EventEmitter} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders ,HttpResponse } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Router } from '@angular/router'
+import { Response } from '@angular/http'
 
 import 'rxjs/add/operator/map';
 
@@ -18,25 +19,17 @@ export class appService {
    currentUser = this.userSource.asObservable()  
 
 
-   constructor(private http:HttpClient) {}
+   constructor(private http:HttpClient ) {}
 
    
    logIn(user,password){
-   return this.http.get('/users/'+user+'/'+password)
-   // .do(res => {
-   //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
-   //      else if (res.status === '200') this.router.navigate(['/profile']);
-   //    })
-   //    .catch(console.log('error'))
+   return this.http.get('/users/'+user+'/'+password,{responseType: 'text' })
+  
    }
 
-   signUp(params){
-   return this.http.post('/users',params)
-   // .do(res => {
-   //      if(res.status === '200' && this.userSource === 'admin') this.router.navigate(['/adminProfile']);
-   //      else if (res.status === '200') this.router.navigate(['/profile']);
-   //    })
-   //    .catch(console.log('error'))
+   signUp(params) {
+     return this.http.post('/users',params,{responseType: 'text' });
+   
    }
 
    getAllAnswers(){
@@ -53,6 +46,7 @@ export class appService {
    }
 
    ask(params){
+   console.log(params,'sssssss')
     return this.http.post('/questions/ask',params)
    }
 

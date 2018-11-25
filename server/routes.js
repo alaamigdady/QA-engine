@@ -11,5 +11,6 @@ router.post('/questions/answer', controller.answer);
 
 router.post('/questions/ask', controller.ask);
 
+//router.get('/questions',controller.add)
 
 module.exports = router;

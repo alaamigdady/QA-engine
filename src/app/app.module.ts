@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { appService } from './app.service';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
 import { SignComponent } from './sign.component';
 import { ProfileComponent } from './profile.component';
+import { AdminComponent } from './admin.component';
 
 
 
@@ -16,7 +18,9 @@ import { ProfileComponent } from './profile.component';
 const appRoutes: Routes = [
    {path: '', component: MainComponent},
    {path: 'signUp', component: SignComponent},
-   {path: 'profile', component: ProfileComponent}
+   {path: 'profile', component: ProfileComponent},
+   {path: 'admin', component: AdminComponent},
+
 
  
  
@@ -24,10 +28,10 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    MainComponent,AppComponent,SignComponent,ProfileComponent
+    MainComponent,AppComponent,SignComponent,ProfileComponent,AdminComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes,{ enableTracing: true }),BrowserModule,FormsModule,HttpClientModule
+    RouterModule.forRoot(appRoutes),BrowserModule,FormsModule,HttpClientModule
   ],
   providers: [appService],
   exports: [RouterModule],

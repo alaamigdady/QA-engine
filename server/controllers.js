@@ -3,39 +3,20 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 module.exports = {
-//     subtotal: (req, res) => {
-//      db.expenses.sum('amount', { where: { category: req.params.category , 
-//       month:req.params.month } })
-//      .then(sum => {
-//       res.json(sum);
-// })
-//     },
-//     total: function (req, res) {
-//       db.expenses.sum('amount').then(sum => {
-//           res.json(sum);
-//         });
-//     },
-//     add: function (req, res) {
-//       db.expenses.create({ 
-//         amount:req.body.amount,
-//         category: req.body.category,
-//         month: req.body.month}).
-//       then(resutl => {
-//        res.sendStatus(201);
-//       });
-//     }
 
+//$2b$10$LNxER/VCI.M0SGMo22VKr.iYIVw9a3MQjsSepIoZJLpF7XK3TK1su
   signUp : (req,res) => {
     let userName = req.body.userName;
     let password = req.body.password;
-
+    console.log(password)
     db.user.findOne({where:{userName : userName}}).then(data => {
       if(data === null){
         bcrypt.hash(password , saltRounds, (err,hash)=> {
-      db.user.create({
+          console.log(hash,'hhhhhh')
+        db.user.create({
         userName:userName,
         passWord : hash,
-      }).then(data => {res.sendStatus(201)})
+      }).then(data => {res.status(201).send('ok')})
 
       })
 
@@ -56,19 +37,34 @@ module.exports = {
 
     db.user.findOne({where:{userName:userName}}).then(data => {
       bcrypt.compare(password, data.dataValues.passWord, (err,result)=>{
-        if(result) {res.sendStatus(201)}
-          else{res.status(400).send('twrong password')}
+        if(result && userName === 'admin') {res.status(201).send('admin')}
+          else if(result) {res.status(201).send('ok')}
+
+          else{res.status(400).send('wrong password')}
       })
     })
   },
 
-  ask : (req,res) =>{
+  // add : (req,res) =>{
+  //   // if (req.params.method === 'ask'){
+  //   //       console.log(req.params.method)
+
+  //   // }else{
+  //   // console.log(req.params.method)
+  //   // }
+  //   console.log('jjjjj')
+
+  // },
+
+  ask : (req,res) => {
     let question = req.body.question;
     let name = req.body.user;
+    console.log(question,'asssssssssssl')
+    console.log(name,'assssssssssssk')
 
     db.question.create({
       question:question,
-      name:name
+      name:name,
     }).then(data => res.sendStatus(201))
     .catch(err => console.log(err))
   },

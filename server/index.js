@@ -14,7 +14,9 @@ app.use('/', router);
 
 app.use(express.static(path.join(__dirname, '../dist/client')));
 
-
+// app.post('/questions', function(req,res){
+// 	console.log('hii')
+// })
 
 
 app.get('/',function(req,res){

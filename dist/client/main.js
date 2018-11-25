@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        \n        \n        <div *ngFor=\"let question of questions\">\n            <input [(ngModel)] =\"answer\" /> \n            <button (click)= \"answerQ(question.id)\"> ANSWER </button> \n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        \n        \n        <div *ngFor=\"let question of questions\">\n        \t<p>{{question.name}} : {{question.question}}</p>\n            <br>\n            <br>\n\n            <input [(ngModel)] =\"answer\" /> \n            <button (click)= \"answerQ(question.id)\"> ANSWER </button> \n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -123,6 +123,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+
+Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
     }
@@ -353,7 +355,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n            <p>gggg</p>\n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n            <p>{{answer.name}} : {{answer.question}}</p>\n            <br>\n            <p>admin :  {{answer.answer}}</p>\n\n\n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 

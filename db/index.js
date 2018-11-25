@@ -11,6 +11,9 @@ const db = new Sequelize('QA1', 'root', '12345678', {host: 'localhost',
   );
 
 
+
+
+
 db
   .authenticate()
   .then(() => {
@@ -19,6 +22,8 @@ db
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+  
 
 // we define the models we need using js--we don't need a schema file!
 const user = db.define('user', {
@@ -40,14 +45,35 @@ const question = db.define('question', {
 });
 
 
-//user.hasMany(question, {foreignKey: 'qid'});
-//question.belongsTo(user, {foreignKey: 'qid'});
 
 
-user.sync({force: true});
-question.sync({force: true});
 
+ user.sync({force: true});
+ question.sync({force: true});
 // creates these tables in MySQL if they don't already exist. Pass in {force: true}
+
+
+
+  db.sync()
+  .then(() => question.create({
+    question: 'test',
+    name: 'admin',
+    answer:'test',
+    answered:true
+  }))
+  .then(() => {
+user.create({
+    userName: 'admin',
+    passWord: '$2b$10$LNxER/VCI.M0SGMo22VKr.iYIVw9a3MQjsSepIoZJLpF7XK3TK1su'
+  })  
+}).then(() => question.create({
+    question: 'test123',
+    name: 'admin',
+    answer:'',
+    answered:false
+  }));
+
+
 
 exports.user = user;
 exports.question = question;

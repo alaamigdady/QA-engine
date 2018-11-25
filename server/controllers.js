@@ -4,7 +4,6 @@ const saltRounds = 10;
 
 module.exports = {
 
-//$2b$10$LNxER/VCI.M0SGMo22VKr.iYIVw9a3MQjsSepIoZJLpF7XK3TK1su
   signUp : (req,res) => {
     let userName = req.body.userName;
     let password = req.body.password;
@@ -22,7 +21,7 @@ module.exports = {
 
       }else{
 
-        res.status(400).send('this user name is exsisted , try another one')
+        res.status(201).send('this user name is exsisted , try another one')
       }
 
     })
@@ -36,12 +35,15 @@ module.exports = {
     
 
     db.user.findOne({where:{userName:userName}}).then(data => {
+      if(data === null){res.status(201).send('you have to sign up first')
+}else{
       bcrypt.compare(password, data.dataValues.passWord, (err,result)=>{
         if(result && userName === 'admin') {res.status(201).send('admin')}
           else if(result) {res.status(201).send('ok')}
 
-          else{res.status(400).send('wrong password')}
+          else{res.status(201).send('wrong password')}
       })
+    }
     })
   },
 

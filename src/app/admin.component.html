@@ -4,7 +4,7 @@
     <header class="app-header">
         
         
-        <div *ngFor="let question of questions ;let index = index">
+        <div *ngFor="let question of questions" class="block">
         	<p>{{question.name}} : {{question.question}}</p>
             <input [(ngModel)] ="question.answer" /> 
             <button (click)= "answerQ(question.qid,question.answer)"> ANSWER </button> 

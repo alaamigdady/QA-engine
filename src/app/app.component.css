@@ -3,7 +3,7 @@
 }
 
 .app-header {
- background-color: #0A6610;
+ background-color: #800000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,4 +24,11 @@ color: white;
 font-size : 20px;}
 .b{
       margin: 200px;
+  }
+
+  .block{
+  	background-color:#996600;
+  	border: 10px solid #ffcc00;
+    padding: 25px;
+    margin: 25px;
   }

@@ -11,11 +11,9 @@
         
         <div *ngFor="let answer of answers">
             <p>{{answer.name}} : {{answer.question}}</p>
-            <br>
             <p>admin :  {{answer.answer}}</p>
-
-
         </div>
+
 
         <a [routerLink] = "['/']"><button>log out</button></a>
 

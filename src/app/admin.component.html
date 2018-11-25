@@ -4,13 +4,10 @@
     <header class="app-header">
         
         
-        <div *ngFor="let question of questions">
+        <div *ngFor="let question of questions ;let index = index">
         	<p>{{question.name}} : {{question.question}}</p>
-            <br>
-            <br>
-
-            <input [(ngModel)] ="answer" /> 
-            <button (click)= "answerQ(question.id)"> ANSWER </button> 
+            <input [(ngModel)] ="question.answer" /> 
+            <button (click)= "answerQ(question.qid,question.answer)"> ANSWER </button> 
         </div>
 
         <a [routerLink] = "['/']"><button>log out</button></a>

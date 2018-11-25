@@ -22,8 +22,8 @@ ngOnInit(){
  		{this.questions=data},(err)=>{console.log('error')})
  }
 
- answerQ(id){
- this.app.answer({"answer":this.answer,"id":id})
+ answerQ(id,ans){
+ this.app.answer({"answer":ans,"id":id}).subscribe()
  }
 
  

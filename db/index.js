@@ -37,7 +37,7 @@ const user = db.define('user', {
 const question = db.define('question', {
   qid: {type: Sequelize.INTEGER,autoIncrement: true ,primaryKey: true},
   question:Sequelize.STRING,
-  answer:Sequelize.STRING,
+  answer:{type:Sequelize.STRING,allowNull: false, defaultValue: ''},
   answered: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false },
   name : Sequelize.STRING,
 
@@ -55,23 +55,12 @@ const question = db.define('question', {
 
 
   db.sync()
-  .then(() => question.create({
-    question: 'test',
-    name: 'admin',
-    answer:'test',
-    answered:true
-  }))
   .then(() => {
 user.create({
     userName: 'admin',
     passWord: '$2b$10$LNxER/VCI.M0SGMo22VKr.iYIVw9a3MQjsSepIoZJLpF7XK3TK1su'
   })  
-}).then(() => question.create({
-    question: 'test123',
-    name: 'admin',
-    answer:'',
-    answered:false
-  }));
+})
 
 
 

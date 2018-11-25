@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        \n        \n        <div *ngFor=\"let question of questions\">\n        \t<p>{{question.name}} : {{question.question}}</p>\n            <br>\n            <br>\n\n            <input [(ngModel)] =\"answer\" /> \n            <button (click)= \"answerQ(question.id)\"> ANSWER </button> \n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        \n        \n        <div *ngFor=\"let question of questions ;let index = index\">\n        \t<p>{{question.name}} : {{question.question}}</p>\n            <input [(ngModel)] =\"question.answer\" /> \n            <button (click)= \"answerQ(question.qid,question.answer)\"> ANSWER </button> \n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -65,8 +65,9 @@ var AdminComponent = /** @class */ (function () {
         var _this = this;
         this.app.getAllQuestions().subscribe(function (data) { _this.questions = data; }, function (err) { console.log('error'); });
     };
-    AdminComponent.prototype.answerQ = function (id) {
-        this.app.answer({ "answer": this.answer, "id": id });
+    AdminComponent.prototype.answerQ = function (id, ans) {
+        this.app.answer({ "answer": ans, "id": id }).subscribe();
+        this.ngOnInit();
     };
     AdminComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -355,7 +356,7 @@ var MainComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n            <p>{{answer.name}} : {{answer.question}}</p>\n            <br>\n            <p>admin :  {{answer.answer}}</p>\n\n\n        </div>\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
+module.exports = "\n\n<div class=\"app\">\n    <header class=\"app-header\">\n        <h2> WELCOME {{userName}}</h2>\n        <div>\n        <p>Ask a question</p>\n        <input [(ngModel)] =\"question\" /> \n        <button (click)= \"ask()\"> ASK </button> \n    \t</div>\n        \n        <div *ngFor=\"let answer of answers\">\n            <p>{{answer.name}} : {{answer.question}}</p>\n            <p>admin :  {{answer.answer}}</p>\n        </div>\n\n\n        <a [routerLink] = \"['/']\"><button>log out</button></a>\n\n  \n\n    </header>\n</div>\n\n"
 
 /***/ }),
 
@@ -392,8 +393,7 @@ var ProfileComponent = /** @class */ (function () {
         this.app.getAllAnswers().subscribe(function (data) { _this.answers = data; }, function (err) { console.log('error'); });
     };
     ProfileComponent.prototype.ask = function () {
-        console.log(this.userName, this.question);
-        this.app.ask({ "question": this.question, "user": this.userName });
+        this.app.ask({ "question": this.question, "user": this.userName }).subscribe();
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

@@ -47,16 +47,6 @@ module.exports = {
     })
   },
 
-  // add : (req,res) =>{
-  //   // if (req.params.method === 'ask'){
-  //   //       console.log(req.params.method)
-
-  //   // }else{
-  //   // console.log(req.params.method)
-  //   // }
-  //   console.log('jjjjj')
-
-  // },
 
   ask : (req,res) => {
     let question = req.body.question;
@@ -67,7 +57,7 @@ module.exports = {
     db.question.create({
       question:question,
       name:name,
-    }).then(data => res.sendStatus(201))
+    }).then(data => res.status(201).send('ok'))
     .catch(err => console.log(err))
   },
 

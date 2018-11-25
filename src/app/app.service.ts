@@ -42,12 +42,11 @@ export class appService {
 
 
    answer(params){
-    return this.http.post('/questions/answer',params)
+    return this.http.post('/questions/answer',params,{responseType: 'text' })
    }
 
    ask(params){
-   console.log(params,'sssssss')
-    return this.http.post('/questions/ask',params)
+    return this.http.post('/questions/ask',params,{responseType: 'text' })
    }
 
    changeUser(user:string){

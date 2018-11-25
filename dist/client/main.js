@@ -46,6 +46,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,17 +58,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var AdminComponent = /** @class */ (function () {
-    function AdminComponent(app) {
+    function AdminComponent(app, router) {
         this.app = app;
+        this.router = router;
     }
     AdminComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.app.getAllQuestions().subscribe(function (data) { _this.questions = data; }, function (err) { console.log('error'); });
     };
     AdminComponent.prototype.answerQ = function (id, ans) {
-        this.app.answer({ "answer": ans, "id": id }).subscribe();
-        this.ngOnInit();
+        var _this = this;
+        this.app.answer({ "answer": ans, "id": id }).subscribe(function (data) {
+            if (data) {
+                console.log('done');
+                _this.app.getAllQuestions().subscribe(function (data) { _this.questions = data; }, function (err) { console.log('error'); });
+                // this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+                // this.router.navigate(["/admin"])); 
+            }
+        });
     };
     AdminComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -75,7 +85,7 @@ var AdminComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./admin.component.html */ "./src/app/admin.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"]])
+        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], AdminComponent);
     return AdminComponent;
 }());
@@ -258,11 +268,10 @@ var appService = /** @class */ (function () {
         return this.http.get('/questions/false');
     };
     appService.prototype.answer = function (params) {
-        return this.http.post('/questions/answer', params);
+        return this.http.post('/questions/answer', params, { responseType: 'text' });
     };
     appService.prototype.ask = function (params) {
-        console.log(params, 'sssssss');
-        return this.http.post('/questions/ask', params);
+        return this.http.post('/questions/ask', params, { responseType: 'text' });
     };
     appService.prototype.changeUser = function (user) {
         this.userSource.next(user);
@@ -372,6 +381,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -383,9 +393,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(app) {
+    function ProfileComponent(app, router) {
         this.app = app;
+        this.router = router;
     }
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -393,7 +405,15 @@ var ProfileComponent = /** @class */ (function () {
         this.app.getAllAnswers().subscribe(function (data) { _this.answers = data; }, function (err) { console.log('error'); });
     };
     ProfileComponent.prototype.ask = function () {
-        this.app.ask({ "question": this.question, "user": this.userName }).subscribe();
+        var _this = this;
+        this.app.ask({ "question": this.question, "user": this.userName }).subscribe(function (data) {
+            if (data) {
+                console.log('done');
+                _this.question = '';
+                //  		this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+                // this.router.navigate(["/profile"])); 
+            }
+        });
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -401,7 +421,7 @@ var ProfileComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./profile.component.html */ "./src/app/profile.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"]])
+        __metadata("design:paramtypes", [_app_service__WEBPACK_IMPORTED_MODULE_1__["appService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());

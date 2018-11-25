@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {appService} from './app.service';
 import {Observable} from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'profile',
@@ -14,7 +15,7 @@ export class ProfileComponent {
 	answers : any;
 	question:any;
 	
-	constructor(private app: appService) {
+	constructor(private app: appService , private router: Router) {
  }
 
  
@@ -25,7 +26,15 @@ ngOnInit(){
  }
 
  ask(){
- 	this.app.ask({"question":this.question,"user":this.userName}).subscribe()
+ 	this.app.ask({"question":this.question,"user":this.userName}).subscribe((data) => {
+ 		if(data){
+ 			console.log('done')
+ 			this.question='';
+//  		this.router.navigateByUrl('/RefrshComponent', {skipLocationChange: true}).then(()=>
+// this.router.navigate(["/profile"])); 
+}
+ 	
+ 	})
 
  }
   
